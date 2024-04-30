@@ -12,11 +12,11 @@ const postData = async (data:FoodData): AxiosPromise<any>=> {
 export function useFoodDataMutate() {
     const queryClient = useQueryClient();
     const mutate = useMutation({
-        mutationFn: postData,
+          mutationFn: postData,
         retry: 2,
         onSuccess: () => {
-            queryClient.invalidateQueries([{ queryKey: 'food-data' }]);         
-        
+            queryClient.invalidateQueries(['food-data'])
+                  
         }      
 
     })

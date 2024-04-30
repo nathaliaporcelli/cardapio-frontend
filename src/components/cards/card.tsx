@@ -16,7 +16,7 @@ export function Card({ nome, descricao, preco, imagem } :CardProps){
             <img src={imagem} />
             <h2>{nome}</h2>
             <p>{descricao}</p>
-            <p><b>Valor:</b>{preco}</p>
+            <p><b>R$ </b>{preco}</p>
         </div>
     )
 }

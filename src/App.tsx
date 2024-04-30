@@ -1,31 +1,33 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import './App.css'
 import { Card } from './components/cards/card';
-import { FoodData } from './interface/FoodData';
 import { useFoodData } from './hooks/useFoodData';
+import { CreateModal } from './components/create-modal/createModal';
 
 function App() {
   const { data } = useFoodData();
-  
-  return (
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    <div className='container'>
+  const handleOpenModal = () => {
+    setIsModalOpen(prev => !prev)
+  }
+
+  return (
+    <div className="container">
       <h1>Cardápio</h1>
       <div className="card-grid">
-        {data?.map(foodData =>
+        {data?.map(foodData => 
           <Card
-          nome={foodData.nome}
-          descricao={foodData.descricao}
-          preco={foodData.preco}
-          imagem={foodData.imagem}
-        />
+            nome={foodData.nome} 
+            descricao={foodData.descricao} 
+            imagem={foodData.imagem}
+            preco = {foodData.preco}
+          />
         )}
-
       </div>
-      
-
-  </div>
-    
+      {isModalOpen && <CreateModal closeModal={handleOpenModal}/>}
+      <button onClick={handleOpenModal}>novo</button>
+    </div>
   )
 }
 
