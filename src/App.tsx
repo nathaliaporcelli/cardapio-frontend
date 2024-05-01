@@ -5,7 +5,7 @@ import { useFoodData } from './hooks/useFoodData';
 import { CreateModal } from './components/create-modal/createModal';
 
 function App() {
-  const { data } = useFoodData();
+  const { data, } = useFoodData();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
